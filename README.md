@@ -3,12 +3,13 @@
  A Matlab function to map the expression of genes onto the Human
  Connectome Project (HCP) average cortical surface (midthickness), and
  correlate with the HCP group average structural, functional, or
- graph-theory-derived maps (Froudist-wWals et al., 2023).
+ graph-theory-derived maps (Froudist-Walsh et al., 2023).
  
  Depends on Guillaume Flandin's gifti toolbox (included)
  http://www.artefact.tk/software/matlab/gifti/
  
  Inputs:
+ 
  	mygene        - gene name from the list genenames 
                  (from the file genenames.mat)
                  Can be either a character array, such as 'DRD1'
@@ -77,6 +78,7 @@
                  wb_view or other programs. 'yes' or 'no'. Default: 'no'
 
  Outputs: 
+ 
  	genemap       - The map of your chosen gene, in gifti format (~32k
                  vertices)
  	genevals      - a vector of gene expression values per brain region,
@@ -91,16 +93,19 @@
  
  Examples: 
  Visualise expression of dopamine D1 receptor gene on the surface:
+ 
  	[DRD5map, DRD5vals] = genemapper('DRD5');
 
  Visualise expression of serotonin HT1A receptor gene on the inflated 
  surface, correlate with HCP tasks, and output the significant task 
  contrasts following Bonferroni correction:
+ 
  	[~,~,~,~,sig_tasks_list] = genemapper('HTR1A','inflated','tasks_sig_bonf')
 
  Visualise average expression of interneuron markers CALB1 and SST on an
  annotated flatmap, correlate with cortical thickness, and save the gene
  expression map as a gifti file for later visualisation in wb_view
+ 
  	interneurons = {'CALB1','SST'}
  	genemapper(interneurons,'flat','cortical_thickness','yes');
 
@@ -108,6 +113,7 @@
  al., 2008), which had significant expression in the Allen Human Brain
  Atlas data (Hawrylycz et al., 2012), display on an inflated surface, and
  correlate with cortical thickness
+ 
 	 astrocytes = {'GFAP','AQP4','PLA2G7','SLC39A12','MLC1','DIO2',...
                'SLC14A1','ALDH1L1','ALDOC','TTPA'}
  	genemapper(astrocytes,'inflated','cortical_thickness')
@@ -116,6 +122,7 @@
  et al., 2008), which had significant expression in the Allen Human Brain
  Atlas data (Hawrylycz et al., 2012), display on an flat surface, and
  correlate with hubness
+ 
  	oligodendrocytes = {'MOG','MOBP','ENPP6','CLDN11','MAG','PLEKHH1',...
                       'FA2H','SGK2','IL23A','MBP'}
 	 genemapper(oligodendrocytes,'flat','hubness')
