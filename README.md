@@ -9,16 +9,16 @@
  http://www.artefact.tk/software/matlab/gifti/
  
  Inputs:
- mygene        - gene name from the list genenames 
+ 	mygene        - gene name from the list genenames 
                  (from the file genenames.mat)
                  Can be either a character array, such as 'DRD1'
                  or a cell. In the case of a cell, expression values will
                  be averaged across all listed genes e.g.
                  dopaminereceptors = {'DRD1','DRD2','DRD3','DRD4','DRD5}
- surfacetype   - surface for visualisation. Can be 'midthickness',
+ 	surfacetype   - surface for visualisation. Can be 'midthickness',
                  'inflated','flat','flat_no_labels' or 'none'. 
                  Default - 'midthickness'
- comparisonmap - Correlate your genemap with any of the following
+ 	comparisonmap - Correlate your genemap with any of the following
                  'myelin' - the Human Connectome Project group
                  average myelin (s1200 release - MSMall registered)
 
@@ -72,53 +72,53 @@
 
                  Default: 'none'
  
- savegifti     - Optionally save gene expression map as a gifti surface
+ 	savegifti     - Optionally save gene expression map as a gifti surface
                  file in the working directory, for visualisation in
                  wb_view or other programs. 'yes' or 'no'. Default: 'no'
 
  Outputs: 
- genemap       - The map of your chosen gene, in gifti format (~32k
+ 	genemap       - The map of your chosen gene, in gifti format (~32k
                  vertices)
- genevals      - a vector of gene expression values per brain region,
+ 	genevals      - a vector of gene expression values per brain region,
                  from the Glasser et al., 2016 parcellation, left 
                  hemisphere)
- r             - Spearman's correlation coefficient
- p             - uncorrected p-value from the correlation
- sig_tasks_list- list of significant task contrasts (available 
+	r             - Spearman's correlation coefficient
+ 	p             - uncorrected p-value from the correlation
+ 	sig_tasks_list- list of significant task contrasts (available 
                  if 'tasks_sig_bonf'  or 'tasks_sig_parbonf' have been 
                  chosen).
 
  
  Examples: 
  Visualise expression of dopamine D1 receptor gene on the surface:
- [DRD5map, DRD5vals] = genemapper('DRD5');
+ 	[DRD5map, DRD5vals] = genemapper('DRD5');
 
  Visualise expression of serotonin HT1A receptor gene on the inflated 
  surface, correlate with HCP tasks, and output the significant task 
  contrasts following Bonferroni correction:
- [~,~,~,~,sig_tasks_list] = genemapper('HTR1A','inflated','tasks_sig_bonf')
+ 	[~,~,~,~,sig_tasks_list] = genemapper('HTR1A','inflated','tasks_sig_bonf')
 
  Visualise average expression of interneuron markers CALB1 and SST on an
  annotated flatmap, correlate with cortical thickness, and save the gene
  expression map as a gifti file for later visualisation in wb_view
- interneurons = {'CALB1','SST'}
- genemapper(interneurons,'flat','cortical_thickness','yes');
+ 	interneurons = {'CALB1','SST'}
+ 	genemapper(interneurons,'flat','cortical_thickness','yes');
 
  Visualise average expression of the top 10 astrocyte markers (Cahoy et
  al., 2008), which had significant expression in the Allen Human Brain
  Atlas data (Hawrylycz et al., 2012), display on an inflated surface, and
  correlate with cortical thickness
- astrocytes = {'GFAP','AQP4','PLA2G7','SLC39A12','MLC1','DIO2',...
+	 astrocytes = {'GFAP','AQP4','PLA2G7','SLC39A12','MLC1','DIO2',...
                'SLC14A1','ALDH1L1','ALDOC','TTPA'}
- genemapper(astrocytes,'inflated','cortical_thickness')
+ 	genemapper(astrocytes,'inflated','cortical_thickness')
 
  Visualise average expression of the top 10 oligodendrocyte markers (Cahoy
  et al., 2008), which had significant expression in the Allen Human Brain
  Atlas data (Hawrylycz et al., 2012), display on an flat surface, and
  correlate with hubness
- oligodendrocytes = {'MOG','MOBP','ENPP6','CLDN11','MAG','PLEKHH1',...
+ 	oligodendrocytes = {'MOG','MOBP','ENPP6','CLDN11','MAG','PLEKHH1',...
                       'FA2H','SGK2','IL23A','MBP'}
- genemapper(oligodendrocytes,'flat','hubness')
+	 genemapper(oligodendrocytes,'flat','hubness')
 
  Note:
  This is inspired by the methods from Burt et al., BioRxiv, 2017.
